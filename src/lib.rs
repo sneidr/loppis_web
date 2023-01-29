@@ -1,22 +1,18 @@
-use stylist::{yew::styled_component, style};
+use stylist::{yew::styled_component, Style};
 use yew::prelude::*;
 mod component;
 
 use component::pages::main_page::MainPage;
 
+const STYLE_FILE: &str = include_str!("main.css");
+
 #[styled_component(App)]
 pub fn app() -> Html {
-    let stylesheet = style! {
-        r#"
-                height: 100%;
-                width: 100%;
-                overflow: auto;
-            "#
-    }
-    .expect("Style error in list grid");
+    let stylesheet = Style::new(STYLE_FILE).unwrap();
+
     html! {
-            <div class={stylesheet}>
-                <MainPage/>
-            </div>
+        <div class={stylesheet}>
+            <MainPage/>
+        </div>
     }
 }

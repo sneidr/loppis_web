@@ -1,11 +1,38 @@
-h1 {
-    color: aqua;
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
 
-* {
-    font-size: 100px;
+.custom-button {
+    color: white;
+    height: 150px;
+    width: 150px;
+    font-size: 24px;
+    border: 0;
+    margin: 10px;
 }
 
-p {
-    color: yellowgreen;
+.custom-button:hover {
+    background-color: aqua;
+}
+
+.custom-button:active {
+    background-color: aquamarine;
+}
+
+.card {
+    background-color: purple
+}
+
+.bag {
+    background-color: yellow
+}
+
+.round {
+    background-color: green
+}
+
+.reset {
+    background-color: red
 }
