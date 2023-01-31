@@ -1,13 +1,24 @@
 use yew::prelude::*;
-
-use crate::component::molecules::item_list::ItemList;
+use web_sys::{HtmlElement};
+use wasm_bindgen::JsCast;
+use crate::component::atoms::colored_button::{ButtonType, ColoredButton};
 use crate::component::atoms::text_input::TextInput;
-use crate::component::atoms::colored_button::{ColoredButton, ButtonType};
+use crate::component::molecules::item_list::ItemList;
 
 #[function_component(MainPage)]
 pub fn main_page() -> Html {
-    let onkeypress_sellerid = Callback::from(|_event: KeyboardEvent| {});
-    let onkeypress_price = Callback::from(|_event: KeyboardEvent| {});
+    let onkeypress_sellerid = Callback::from(|_event: KeyboardEvent| {
+        let window = web_sys::window().expect("Hej");
+        let document = window.document().expect("Hejhej");
+        document
+            .query_selector("#PriceBox").expect("1").expect("2").dyn_ref::<HtmlElement>().expect("3").focus().expect("");
+    });
+    let onkeypress_price = Callback::from(|_event: KeyboardEvent| {
+        let window = web_sys::window().expect("Hej");
+        let document = window.document().expect("Hejhej");
+        document
+            .query_selector("#SellerIdBox").expect("1").expect("2").dyn_ref::<HtmlElement>().expect("3").focus().expect("");
+    });
 
     html! {
         <div class={"container"}>
