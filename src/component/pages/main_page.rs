@@ -17,7 +17,7 @@ pub fn main_page() -> Html {
                 <TextInput id={"SellerIdBox"} name={"Säljare"} onkeypress={onkeypress_sellerid}/>
                 <TextInput id={"PriceBox"} name={"Pris"} onkeypress={onkeypress_price}/>
             </div>
-            <div>
+            <div class={classes!("buttons-left")}>
                 <ColoredButton button_type={ButtonType::Card}>{"Vykort"}</ColoredButton>
                 <ColoredButton button_type={ButtonType::Bag}>{"Kasse"}</ColoredButton>
                 <ColoredButton button_type={ButtonType::Round}>{"Avrunda"}</ColoredButton>

@@ -17,6 +17,7 @@ pub fn text_input(props: &Props) -> Html {
             width:300px;
             font-size:70px;
             display: inline;
+            float: none;
             margin: 20px;
         "#
     )
