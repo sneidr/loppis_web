@@ -6,8 +6,8 @@ use web_sys::HtmlElement;
 use yew::prelude::*;
 
 fn set_focus_to(element: &str) {
-    let window = web_sys::window().expect("Hej");
-    let document = window.document().expect("Hejhej");
+    let window = web_sys::window().expect("No window found!");
+    let document = window.document().expect("No document found!");
     document
         .query_selector(element)
         .expect("1")
@@ -20,11 +20,15 @@ fn set_focus_to(element: &str) {
 
 #[function_component(MainPage)]
 pub fn main_page() -> Html {
-    let onkeypress_sellerid = Callback::from(|_event: KeyboardEvent| {
-        set_focus_to("#PriceBox");
+    let onkeypress_sellerid = Callback::from(|event: KeyboardEvent| {
+        if event.key() == "Enter" {
+            set_focus_to("#PriceBox");
+        }
     });
-    let onkeypress_price = Callback::from(|_event: KeyboardEvent| {
-        set_focus_to("#SellerIdBox");
+    let onkeypress_price = Callback::from(|event: KeyboardEvent| {
+        if event.key() == "Enter" {
+            set_focus_to("#SellerIdBox");
+        }
     });
 
     html! {
