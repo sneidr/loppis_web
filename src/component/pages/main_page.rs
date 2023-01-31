@@ -1,23 +1,30 @@
-use yew::prelude::*;
-use web_sys::{HtmlElement};
-use wasm_bindgen::JsCast;
 use crate::component::atoms::colored_button::{ButtonType, ColoredButton};
 use crate::component::atoms::text_input::TextInput;
 use crate::component::molecules::item_list::ItemList;
+use wasm_bindgen::JsCast;
+use web_sys::HtmlElement;
+use yew::prelude::*;
+
+fn set_focus_to(element: &str) {
+    let window = web_sys::window().expect("Hej");
+    let document = window.document().expect("Hejhej");
+    document
+        .query_selector(element)
+        .expect("1")
+        .expect("2")
+        .dyn_ref::<HtmlElement>()
+        .expect("3")
+        .focus()
+        .expect("");
+}
 
 #[function_component(MainPage)]
 pub fn main_page() -> Html {
     let onkeypress_sellerid = Callback::from(|_event: KeyboardEvent| {
-        let window = web_sys::window().expect("Hej");
-        let document = window.document().expect("Hejhej");
-        document
-            .query_selector("#PriceBox").expect("1").expect("2").dyn_ref::<HtmlElement>().expect("3").focus().expect("");
+        set_focus_to("#PriceBox");
     });
     let onkeypress_price = Callback::from(|_event: KeyboardEvent| {
-        let window = web_sys::window().expect("Hej");
-        let document = window.document().expect("Hejhej");
-        document
-            .query_selector("#SellerIdBox").expect("1").expect("2").dyn_ref::<HtmlElement>().expect("3").focus().expect("");
+        set_focus_to("#SellerIdBox");
     });
 
     html! {
